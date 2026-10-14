@@ -3,7 +3,7 @@ pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   articles/getting-started: getting-started.html
-last_built: 2026-10-14T18:14Z
+last_built: 2026-10-14T19:35Z
 urls:
   reference: https://ebenogoe.github.io/clusnalyst/reference
   article: https://ebenogoe.github.io/clusnalyst/articles
