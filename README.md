@@ -64,4 +64,4 @@ Run `citation("clusnalyst")`, and cite the methods you use as well. The app's Gu
 
 ## Licence
 
-MIT. Michael Obeng and Stephen Amoako are credited as contributors for the 2022 app. The Atkinson Hyperlegible fonts are under the SIL Open Font License (`inst/app/www/fonts/OFL.txt`).
+MIT. Michael Obeng and Stephen Amoako are credited as contributors for the 2022 app.

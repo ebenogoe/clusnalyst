@@ -1,22 +1,22 @@
-#' Bootstrap theme matching ebenezerogoe.com
+#' Clusnalyst's own theme: violet with coral and mint accents, Plus Jakarta Sans
 #' @noRd
 cl_theme <- function() {
-  sans <- bslib::font_collection("Atkinson Hyperlegible Next", "Segoe UI", "system-ui",
-                                 "-apple-system", "sans-serif")
-  mono <- bslib::font_collection("Atkinson Hyperlegible Mono", "ui-monospace", "SF Mono",
-                                 "Menlo", "monospace")
+  # Loaded from Google Fonts by the visitor's browser; offline it falls back to system fonts
+  sans <- bslib::font_collection(bslib::font_google("Plus Jakarta Sans", wght = "400..800", local = FALSE),
+                                 "system-ui", "-apple-system", "Segoe UI", "sans-serif")
+  mono <- bslib::font_collection("ui-monospace", "SF Mono", "Menlo", "Consolas", "monospace")
   bslib::bs_theme(
     version = 5,
-    primary = "#17503f", secondary = "#56615b", success = "#17503f",
-    info = "#29497c", warning = "#8a5300", danger = "#a3261b",
+    primary = "#5b3fd6", secondary = "#5e5a78", success = "#12806a",
+    info = "#2563c9", warning = "#9a4a00", danger = "#c0362c",
     base_font = sans, heading_font = sans, code_font = mono,
-    "body-bg" = "#f7f8f6", "body-color" = "#2a322e",
-    "body-bg-dark" = "#111614", "body-color-dark" = "#d7deda",
-    "link-color" = "#156049", "link-color-dark" = "#6fd3a0",
+    "body-bg" = "#ffffff", "body-color" = "#2d2a45",
+    "body-bg-dark" = "#121022", "body-color-dark" = "#e2dff2",
+    "link-color" = "#5136c9", "link-color-dark" = "#b3a6ff",
     "headings-font-weight" = 800,
-    "border-radius" = "6px", "border-radius-sm" = "3px", "border-radius-lg" = "10px",
+    "border-radius" = "10px", "border-radius-sm" = "8px", "border-radius-lg" = "14px",
     "font-size-base" = "1rem",
-    "navbar-light-brand-color" = "#1b2320"
+    "navbar-light-brand-color" = "#1e1b33"
   )
 }
 
@@ -147,9 +147,9 @@ keep_downloads <- function(output, ids) {
 #' @noRd
 cl_girafe <- function(p, width = 8, height = 6, dark = FALSE) {
   tip_css <- if (dark) {
-    "background:#f1f4f2;color:#111614;padding:6px 10px;border-radius:6px;font-family:'Atkinson Hyperlegible Next',sans-serif;font-size:13px;max-width:280px;"
+    "background:#f4f2ff;color:#121022;padding:7px 11px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;max-width:280px;"
   } else {
-    "background:#1b2320;color:#fff;padding:6px 10px;border-radius:6px;font-family:'Atkinson Hyperlegible Next',sans-serif;font-size:13px;max-width:280px;"
+    "background:#1e1b33;color:#fff;padding:7px 11px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;max-width:280px;"
   }
   ggiraph::girafe(
     ggobj = p, width_svg = width, height_svg = height, bg = "transparent",

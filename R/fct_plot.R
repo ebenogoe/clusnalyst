@@ -10,9 +10,9 @@ cl_palette <- function(n) {
   if (n <= length(oi)) oi[seq_len(n)] else grDevices::hcl.colors(n, "Dark 3")
 }
 
-brand <- list(green = "#17503f", green_dark = "#5cc98f", text = "#2a322e",
-              text_dark = "#d7deda", muted = "#56615b", muted_dark = "#9ca8a2",
-              line = "#dfe4e0", line_dark = "#2c3531")
+brand <- list(accent = "#5b3fd6", accent_dark = "#a594ff", text = "#2d2a45",
+              text_dark = "#e2dff2", muted = "#5e5a78", muted_dark = "#a9a4c4",
+              line = "#ebe8f6", line_dark = "#2c2945", coral = "#ff7a59")
 
 #' ggplot2 theme used by Clusnalyst
 #' @param base_size Base font size.
@@ -69,7 +69,7 @@ plot_tree <- function(tree, layout = "rectangular", groups = NULL, group_title =
   ntip <- ape::Ntip(phy)
   lay <- switch(layout, unrooted = "equal_angle", layout)
   txt <- if (dark) brand$text_dark else brand$text
-  line_col <- if (dark) "#8b9690" else "#3a4540"
+  line_col <- if (dark) "#8d88ab" else "#3d3a58"
   p <- ggtree::ggtree(phy, layout = lay, colour = line_col, linewidth = 0.5)
   tips <- phy$tip.label
   info <- data.frame(label = tips, stringsAsFactors = FALSE)
@@ -109,7 +109,7 @@ plot_tree <- function(tree, layout = "rectangular", groups = NULL, group_title =
     p <- p + ggplot2::geom_text(
       data = function(df) df[!is.na(df$cl_support_lab), ],
       ggplot2::aes(x = .data$x, y = .data$y, label = .data$cl_support_lab),
-      size = label_size * 0.8, colour = if (dark) brand$green_dark else brand$green,
+      size = label_size * 0.8, colour = if (dark) brand$accent_dark else brand$accent,
       hjust = if (layout %in% c("rectangular", "slanted")) 1.2 else 0.5,
       vjust = -0.5, fontface = "bold"
     )
@@ -217,7 +217,7 @@ plot_ordination <- function(ord, groups = NULL, group_title = "Group", axes = c(
                                 check_overlap = TRUE, show.legend = FALSE)
   }
   p + ggplot2::scale_colour_manual(
-      values = if (has_groups) stats::setNames(cl_palette(length(lv)), lv) else c(All = if (dark) brand$green_dark else brand$green),
+      values = if (has_groups) stats::setNames(cl_palette(length(lv)), lv) else c(All = if (dark) brand$accent_dark else brand$accent),
       name = group_title, guide = if (has_groups) "legend" else "none") +
     ggplot2::labs(x = xl, y = yl) +
     theme_clusnalyst(dark = dark)
@@ -232,7 +232,7 @@ plot_scree <- function(ord, n = 10, dark = FALSE) {
   v <- utils::head(ord$variance, n)
   df <- data.frame(axis = factor(seq_along(v)), var = v)
   ggplot2::ggplot(df, ggplot2::aes(.data$axis, .data$var)) +
-    ggplot2::geom_col(fill = if (dark) brand$green_dark else brand$green, width = 0.7) +
+    ggplot2::geom_col(fill = if (dark) brand$accent_dark else brand$accent, width = 0.7) +
     ggplot2::labs(x = "Axis", y = "Variance explained (%)") +
     theme_clusnalyst(dark = dark)
 }
@@ -254,7 +254,7 @@ plot_k <- function(kres, dark = FALSE) {
   }
   long$what <- factor(long$what, levels = unique(long$what))
   best <- data.frame(k = kres$best_silhouette, what = levels(long$what)[1])
-  col <- if (dark) brand$green_dark else brand$green
+  col <- if (dark) brand$accent_dark else brand$accent
   p <- ggplot2::ggplot(long, ggplot2::aes(.data$k, .data$value)) +
     ggplot2::geom_vline(data = best, ggplot2::aes(xintercept = .data$k), linetype = 2,
                         colour = if (dark) brand$muted_dark else brand$muted) +
@@ -279,7 +279,7 @@ plot_k <- function(kres, dark = FALSE) {
 #' @return A ggplot object.
 #' @export
 plot_qc <- function(qc, dark = FALSE, thresholds = NULL) {
-  col <- if (dark) brand$green_dark else brand$green
+  col <- if (dark) brand$accent_dark else brand$accent
   if (qc$type %in% c("binary", "snp")) {
     long <- rbind(
       data.frame(value = qc$markers$missing, what = "Missing data per marker"),
@@ -314,7 +314,7 @@ plot_qc <- function(qc, dark = FALSE, thresholds = NULL) {
     if (nrow(th)) {
       th$what <- factor(th$what, levels = levels(long$what))
       p <- p + ggplot2::geom_vline(data = th, ggplot2::aes(xintercept = .data$v),
-                                   linetype = 2, colour = "#D55E00")
+                                   linetype = 2, colour = brand$coral)
     }
   }
   p
@@ -332,8 +332,8 @@ plot_support <- function(boot, dark = FALSE) {
   df <- as.data.frame(table(bins))
   df$mid <- seq(5, 95, 10)
   ggplot2::ggplot(df, ggplot2::aes(.data$mid, .data$Freq)) +
-    ggplot2::geom_col(width = 9.2, fill = if (dark) brand$green_dark else brand$green) +
-    ggplot2::geom_vline(xintercept = 70, linetype = 2, colour = "#D55E00") +
+    ggplot2::geom_col(width = 9.2, fill = if (dark) brand$accent_dark else brand$accent) +
+    ggplot2::geom_vline(xintercept = 70, linetype = 2, colour = brand$coral) +
     ggplot2::scale_x_continuous(limits = c(0, 100), breaks = seq(0, 100, 20)) +
     ggplot2::labs(x = "Bootstrap support (%)", y = "Number of groups in the tree") +
     theme_clusnalyst(dark = dark)
@@ -347,8 +347,8 @@ plot_support <- function(boot, dark = FALSE) {
 #' @export
 plot_mantel <- function(mantel, labels = c("Distance 1", "Distance 2"), dark = FALSE) {
   ggplot2::ggplot(mantel$pairs, ggplot2::aes(.data$d2, .data$d1)) +
-    ggplot2::geom_point(alpha = 0.35, size = 1.4, colour = if (dark) brand$green_dark else brand$green) +
-    ggplot2::geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = "#D55E00", linewidth = 0.8) +
+    ggplot2::geom_point(alpha = 0.35, size = 1.4, colour = if (dark) brand$accent_dark else brand$accent) +
+    ggplot2::geom_smooth(method = "lm", formula = y ~ x, se = FALSE, colour = brand$coral, linewidth = 0.8) +
     ggplot2::labs(x = labels[2], y = labels[1],
                   subtitle = sprintf("Mantel r = %.3f, p = %.3f (%d permutations)",
                                      mantel$r, mantel$p, mantel$permutations)) +

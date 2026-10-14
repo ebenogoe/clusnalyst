@@ -17,7 +17,7 @@ mod_about_ui <- function(id) {
     shiny::h2("Citing it"),
     shiny::p("If Clusnalyst helps your work, cite the package and the methods you used (the Guide lists the references). Run ", shiny::tags$code('citation("clusnalyst")'), " in R for the current citation."),
     shiny::h2("Built with"),
-    shiny::p("R and Shiny, with bslib, ape, cluster, ade4, msa and Biostrings, seqinr, vcfR, ggtree, ggplot2, ggiraph, reactable and cicerone. The text is set in Atkinson Hyperlegible Next, from the Braille Institute, under the SIL Open Font License."),
+    shiny::p("R and Shiny, with bslib, ape, cluster, ade4, msa and Biostrings, seqinr, vcfR, ggtree, ggplot2, ggiraph, reactable and cicerone. The text is set in Plus Jakarta Sans, served by Google Fonts under the SIL Open Font License."),
     shiny::p(class = "cl-muted", sprintf("Version %s. MIT licence. ", utils::packageVersion("clusnalyst")),
              shiny::tags$a(href = "https://github.com/ebenogoe/clusnalyst", target = "_blank", rel = "noopener", "Source code and issues on GitHub"), ".")
   )

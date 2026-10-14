@@ -2,11 +2,11 @@ url: https://ebenogoe.github.io/clusnalyst/
 template:
   bootstrap: 5
   bslib:
-    primary: "#17503f"
-    base_font: {google: "Atkinson Hyperlegible Next"}
-    code_font: {google: "Atkinson Hyperlegible Mono"}
-    bg: "#f7f8f6"
-    fg: "#2a322e"
+    primary: "#5b3fd6"
+    base_font: {google: "Plus Jakarta Sans"}
+    code_font: {google: "JetBrains Mono"}
+    bg: "#ffffff"
+    fg: "#2d2a45"
 navbar:
   structure:
     left: [intro, reference, articles, news]

@@ -31,28 +31,29 @@ html_table <- function(df, digits = 3, max_rows = 200) {
 }
 
 report_css <- "
-:root { --bg:#f7f8f6; --text:#2a322e; --muted:#56615b; --brand:#17503f; --line:rgba(27,35,32,.14); }
+:root { --bg:#ffffff; --band:#f6f4ff; --text:#2d2a45; --muted:#5e5a78; --brand:#5b3fd6; --line:#e6e2f5; }
 * { box-sizing: border-box; }
-body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 'Atkinson Hyperlegible Next','Segoe UI',system-ui,sans-serif; }
+body { margin:0; background:var(--bg); color:var(--text); font:16px/1.6 'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',sans-serif; }
 main { max-width: 60rem; margin: 0 auto; padding: 2rem 1rem 4rem; }
 h1 { font-size: 2.4rem; line-height: 1.05; margin: 0 0 .25rem; font-weight: 800; letter-spacing: -.02em; }
 h2 { font-size: 1.4rem; margin: 2.5rem 0 .75rem; padding-top: 1rem; border-top: 1px solid var(--line); }
 .lede { color: var(--muted); margin: 0 0 1.5rem; }
 .facts { display:grid; grid-template-columns: repeat(auto-fit, minmax(10rem,1fr)); gap:.75rem; margin: 1rem 0; }
-.fact { background:#fff; border:1px solid var(--line); border-radius:6px; padding:.75rem 1rem; }
+.fact { background:var(--band); border-radius:12px; padding:.75rem 1rem; }
 .fact b { display:block; font-size:1.5rem; color:var(--brand); }
 .fact span { font-size:.85rem; color:var(--muted); }
 table { border-collapse: collapse; width: 100%; font-size: .85rem; background:#fff; margin:.5rem 0 1rem; }
 th, td { border-bottom: 1px solid var(--line); padding: .35rem .5rem; text-align: left; }
-th { background:#eef1ec; }
-.fig { background:#fff; border:1px solid var(--line); border-radius:6px; padding:.75rem; margin:.75rem 0; overflow:auto; }
+th { background:var(--band); }
+.fig { background:#fff; border:1px solid var(--line); border-radius:14px; padding:.75rem; margin:.75rem 0; overflow:auto; }
 .fig svg { max-width: 100%; height: auto; }
 .note { color: var(--muted); font-size: .9rem; }
 dl.settings { display:grid; grid-template-columns: max-content 1fr; gap:.25rem 1rem; }
 dl.settings dt { font-weight: 700; }
 dl.settings dd { margin: 0; }
 footer { margin-top: 3rem; color: var(--muted); font-size: .85rem; }
-a { color: #156049; }
+a { color: #5136c9; }
+h1 { letter-spacing: -.04em; }
 @media print { body { background:#fff; } .fig, .fact, table { border-color:#ccc; } }
 "
 
@@ -222,7 +223,7 @@ build_report <- function(res, settings = list(), path, title = "Clusnalyst repor
   head <- paste0(
     "<head>\n<meta charset=\"utf-8\">\n",
     "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n",
-    "<title>", htmltools::htmlEscape(title), "</title>\n<style>", report_css, "</style>\n</head>"
+    "<title>", htmltools::htmlEscape(title), "</title>\n<link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap\">\n<style>", report_css, "</style>\n</head>"
   )
   writeLines(c("<!DOCTYPE html>", "<html lang=\"en\">", head, as.character(body), "</html>"),
              path, useBytes = TRUE)
