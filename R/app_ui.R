@@ -49,7 +49,8 @@ analyse_ui <- function(lim) {
       width = 280,
       open = list(desktop = "open", mobile = "closed"),
       title = "Steps",
-      shiny::uiOutput("stepper"),
+      # uiOutput containers have no box of their own, so the tour targets this wrapper
+      shiny::div(id = "tour-steps", shiny::uiOutput("stepper")),
       shiny::div(
         class = "cl-sidebar-foot",
         shiny::actionLink("start_tour", shiny::tagList(bsicons::bs_icon("signpost-split"), "Take the tour")),

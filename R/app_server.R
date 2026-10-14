@@ -80,23 +80,23 @@ app_server <- function(input, output, session) {
   tour <- cicerone::Cicerone$new(allow_close = TRUE, padding = 6, opacity = 0.5,
                                  done_btn_text = "Done", close_btn_text = "Close",
                                  next_btn_text = "Next", prev_btn_text = "Back")
-  tour$step("stepper", "The seven steps",
-            "Each step opens once the one before it is done. A tick marks a finished step, and you can go back to any of them.", position = "right")$
-    step("data-src", "Start here",
-         "Upload your own file, load a demo dataset, or pick up a saved session.")$
-    step("data-summary", "What was read",
-         "After loading, the number of samples and markers and the share of missing data appear here. Check them before moving on.")$
-    step("dark_mode", "Light or dark",
-         "Switch the colour scheme here. Downloads always come out on a white background.")
+  tour$step("tour-steps", "Workflow",
+            "Seven steps from data to export. Each step unlocks when the previous one is complete; completed steps are marked with a tick.", position = "right")$
+    step("data-src", "Data source",
+         "Upload a file, load a demo dataset, or resume a saved session.")$
+    step("data-summary", "Summary",
+         "Samples, markers, data type and missing data read from the file.")$
+    step("dark_mode", "Theme",
+         "Switch between light and dark themes. Downloads always use a white background.")
+  # Start shortly after switching to the analysis page, once its elements have a size
   start_tour <- function() {
     goto("data")
-    tour$init()$start()
+    tour$init()
+    session$sendCustomMessage("cl-start-tour", list(delay = 400))
   }
   shiny::observeEvent(input$start_tour, start_tour())
   mod_guide_server("guide", goto = goto, start_tour = start_tour)
   shiny::observeEvent(input$cl_first_visit, {
-    if (isTRUE(input$cl_first_visit)) {
-      tour$init()$start()
-    }
+    if (isTRUE(input$cl_first_visit)) start_tour()
   })
 }
