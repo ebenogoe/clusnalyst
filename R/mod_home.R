@@ -56,7 +56,8 @@ mod_home_server <- function(id, goto, dark) {
       p <- plot_tree(x$tree, layout = "circular", groups = g, group_title = "Population",
                      tooltip = sample_tooltips(names(g), x$d$meta), label_size = 2.9,
                      dark = dark(), show_scale = FALSE)
-      cl_girafe(p, 6, 6, dark = dark())
+      # A preview only: hover for details, no zoom or toolbar
+      cl_girafe(p, 6, 6, dark = dark(), toolbar = FALSE)
     })
     shiny::observeEvent(input$go_upload, {
       goto("data")

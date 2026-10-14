@@ -145,7 +145,7 @@ keep_downloads <- function(output, ids) {
 
 #' Render a ggplot as an interactive SVG with the app's settings
 #' @noRd
-cl_girafe <- function(p, width = 8, height = 6, dark = FALSE) {
+cl_girafe <- function(p, width = 8, height = 6, dark = FALSE, toolbar = TRUE) {
   tip_css <- if (dark) {
     "background:#f4f2ff;color:#121022;padding:7px 11px;border-radius:10px;font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;max-width:280px;"
   } else {
@@ -159,9 +159,13 @@ cl_girafe <- function(p, width = 8, height = 6, dark = FALSE) {
       ggiraph::opts_hover(css = "stroke:#D55E00;stroke-width:2px;"),
       ggiraph::opts_hover_inv(css = "opacity:0.55;"),
       ggiraph::opts_selection(type = "none"),
-      ggiraph::opts_zoom(min = 0.5, max = 6),
-      ggiraph::opts_toolbar(position = "topright", saveaspng = FALSE,
-                            hidden = c("lasso_select", "lasso_deselect"))
+      if (toolbar) ggiraph::opts_zoom(min = 0.5, max = 6) else ggiraph::opts_zoom(min = 1, max = 1),
+      if (toolbar) {
+        ggiraph::opts_toolbar(position = "topright", saveaspng = FALSE,
+                              hidden = c("lasso_select", "lasso_deselect"))
+      } else {
+        ggiraph::opts_toolbar(saveaspng = FALSE, hidden = c("selection", "zoom", "misc"))
+      }
     )
   )
 }
