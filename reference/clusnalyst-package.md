@@ -24,11 +24,11 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Ebenezer Ogoe <ebenezerogoe@gmail.com> \[copyright
-holder\]
+**Maintainer**: Ebenezer Ogoe <ebenezerogoe@gmail.com> (Co-creator;
+wrote the 2026 package) \[copyright holder\]
 
-Other contributors:
+Authors:
 
-- Michael Obeng (Co-author of the 2022 Clusnalyst app) \[contributor\]
+- Michael Obeng (Co-creator of Clusnalyst (2022))
 
-- Stephen Amoako (Co-author of the 2022 Clusnalyst app) \[contributor\]
+- Stephen Amoako (Co-creator of Clusnalyst (2022))
