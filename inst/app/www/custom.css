@@ -363,3 +363,17 @@ bslib-input-dark-mode { --text-1: var(--cl-text); --text-2: var(--cl-muted); --v
 
 /* Plot text: servers without a "sans" font mapping would otherwise fall back to a serif */
 .girafe_container_std svg text { font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif !important; }
+
+/* Home fits the window on laptops and desktops: the hero takes the height left between the
+   navbar and the footer (about 12.25rem together), and the tree scales down to fit. */
+@media (min-width: 992px) and (min-height: 600px) {
+  .cl-home { min-height: 0; height: calc(100dvh - 12.25rem); overflow: clip; overflow-clip-margin: 1rem; }
+  .cl-hero { padding: 1rem 0; }
+  .cl-hero-figure { display: flex; justify-content: center; }
+  .cl-hero-card { width: auto; min-width: min(32rem, 100%); max-width: 100%; }
+  .cl-hero-card .girafe_container_std { width: auto !important; }
+  .cl-hero-card .girafe_container_std svg {
+    width: auto !important; height: calc(100dvh - 20rem) !important;
+    max-width: 100%; max-height: 40rem; display: block; margin: 0 auto;
+  }
+}
