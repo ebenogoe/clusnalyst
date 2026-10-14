@@ -1,12 +1,12 @@
 bibentry(
   bibtype = "Manual",
   title = "clusnalyst: Point-and-Click Cluster Analysis of Molecular and Trait Data",
-  author = c(person("Ebenezer", "Ogoe")),
+  author = c(person("Ebenezer", "Ogoe"), person("Michael", "Obeng"), person("Stephen", "Amoako")),
   year = "2026",
   note = paste("R package version", utils::packageVersion("clusnalyst")),
   url = "https://github.com/ebenogoe/clusnalyst",
   textVersion = paste0(
-    "Ogoe, E. (2026). clusnalyst: Point-and-Click Cluster Analysis of Molecular and Trait Data. ",
+    "Ogoe, E., Obeng, M. and Amoako, S. (2026). clusnalyst: Point-and-Click Cluster Analysis of Molecular and Trait Data. ",
     "R package version ", utils::packageVersion("clusnalyst"), ". https://github.com/ebenogoe/clusnalyst"
   )
 )

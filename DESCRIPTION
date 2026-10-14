@@ -2,11 +2,12 @@ Package: clusnalyst
 Title: Point-and-Click Cluster Analysis of Molecular and Trait Data
 Version: 0.1.0
 Authors@R: c(
-    person("Ebenezer", "Ogoe", , "ebenezerogoe@gmail.com", role = c("aut", "cre", "cph")),
-    person("Michael", "Obeng", role = "ctb",
-           comment = "Co-author of the 2022 Clusnalyst app"),
-    person("Stephen", "Amoako", role = "ctb",
-           comment = "Co-author of the 2022 Clusnalyst app")
+    person("Ebenezer", "Ogoe", , "ebenezerogoe@gmail.com", role = c("aut", "cre", "cph"),
+           comment = "Co-creator; wrote the 2026 package"),
+    person("Michael", "Obeng", role = "aut",
+           comment = "Co-creator of Clusnalyst (2022)"),
+    person("Stephen", "Amoako", role = "aut",
+           comment = "Co-creator of Clusnalyst (2022)")
   )
 Description: A 'shiny' application and a set of plain R functions for
     clustering samples from dominant markers, SNP genotypes (CSV, VCF or

@@ -18,12 +18,12 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Ebenezer Ogoe \email{ebenezerogoe@gmail.com} [copyright holder]
+\strong{Maintainer}: Ebenezer Ogoe \email{ebenezerogoe@gmail.com} (Co-creator; wrote the 2026 package) [copyright holder]
 
-Other contributors:
+Authors:
 \itemize{
-  \item Michael Obeng (Co-author of the 2022 Clusnalyst app) [contributor]
-  \item Stephen Amoako (Co-author of the 2022 Clusnalyst app) [contributor]
+  \item Michael Obeng (Co-creator of Clusnalyst (2022))
+  \item Stephen Amoako (Co-creator of Clusnalyst (2022))
 }
 
 }

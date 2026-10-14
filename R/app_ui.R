@@ -82,7 +82,7 @@ cl_footer <- function() {
   shiny::tags$footer(
     class = "cl-footer",
     shiny::div(shiny::HTML(sprintf(
-      'Clusnalyst %s. Built by <a href="https://ebenezerogoe.com" target="_blank" rel="noopener">Ebenezer Ogoe</a>. First built in 2022 at KNUST by the Project Genaxy team.',
+      'Clusnalyst %s. Created by Ebenezer Ogoe, Michael Obeng and Stephen Amoako (KNUST, 2022). Maintained by <a href="https://ebenezerogoe.com" target="_blank" rel="noopener">Ebenezer Ogoe</a>.',
       utils::packageVersion("clusnalyst")
     ))),
     shiny::div(

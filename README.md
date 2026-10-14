@@ -76,4 +76,4 @@ Run `citation("clusnalyst")`, and cite the methods you use as well. The app's Gu
 
 ## Licence
 
-MIT. Michael Obeng and Stephen Amoako are credited as contributors for the 2022 app.
+MIT. Clusnalyst was created by Ebenezer Ogoe, Michael Obeng and Stephen Amoako; the 2026 package was written and is maintained by Ebenezer Ogoe.
