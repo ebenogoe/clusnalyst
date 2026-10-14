@@ -1,0 +1,78 @@
+url: https://ebenogoe.github.io/clusnalyst/
+template:
+  bootstrap: 5
+  bslib:
+    primary: "#17503f"
+    base_font: {google: "Atkinson Hyperlegible Next"}
+    code_font: {google: "Atkinson Hyperlegible Mono"}
+    bg: "#f7f8f6"
+    fg: "#2a322e"
+navbar:
+  structure:
+    left: [intro, reference, articles, news]
+    right: [search, github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://github.com/ebenogoe/clusnalyst
+reference:
+  - title: The app
+    contents:
+      - run_app
+  - title: Reading data
+    contents:
+      - read_markers
+      - detect_format
+      - guess_type
+      - read_vcf
+      - read_hapmap
+      - read_fasta
+      - align_sequences
+      - read_metadata
+      - attach_metadata
+      - genotypes_to_dosage
+      - data_types
+      - sample_names
+      - demo_info
+  - title: Quality check
+    contents:
+      - qc_summary
+      - filter_data
+  - title: Distances and trees
+    contents:
+      - distance_choices
+      - default_distance
+      - compute_distance
+      - tree_choices
+      - build_tree
+      - cophenetic_cor
+      - cophenetic_table
+  - title: Checking the tree
+    contents:
+      - bootstrap_tree
+      - consensus_tree
+      - optimal_k
+      - silhouette_meaning
+      - mantel_test
+      - read_second_matrix
+      - metadata_distance
+  - title: Groups and ordination
+    contents:
+      - ordinate
+      - partition
+      - has_numeric
+  - title: Plots
+    contents:
+      - starts_with("plot_")
+      - cl_palette
+      - theme_clusnalyst
+  - title: Whole analyses, reports and sessions
+    contents:
+      - default_settings
+      - run_analysis
+      - build_script
+      - build_report
+      - save_session
+  - title: Package
+    contents:
+      - clusnalyst-package

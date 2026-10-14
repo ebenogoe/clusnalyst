@@ -1,0 +1,64 @@
+Package: clusnalyst
+Title: Point-and-Click Cluster Analysis of Molecular and Trait Data
+Version: 0.1.0
+Authors@R: c(
+    person("Ebenezer", "Ogoe", , "ebenezerogoe@gmail.com", role = c("aut", "cre", "cph")),
+    person("Michael", "Obeng", role = "ctb",
+           comment = "Co-author of the 2022 Clusnalyst app"),
+    person("Stephen", "Amoako", role = "ctb",
+           comment = "Co-author of the 2022 Clusnalyst app")
+  )
+Description: A 'shiny' application and a set of plain R functions for
+    clustering samples from dominant markers, SNP genotypes (CSV, VCF or
+    HapMap), quantitative or mixed traits, and DNA or protein sequences.
+    It computes distance matrices, builds trees by UPGMA, WPGMA, single,
+    complete or Ward linkage, neighbour joining or BIONJ, and checks them
+    with marker bootstrap support (Felsenstein 1985
+    <doi:10.1111/j.1558-5646.1985.tb00420.x>), cophenetic correlation,
+    average silhouette width, the gap statistic and Mantel tests. It also
+    offers principal coordinates and principal components, k-means and
+    partitioning around medoids, and exports a self-contained HTML report
+    and an R script that reproduces the analysis.
+License: MIT + file LICENSE
+URL: https://github.com/ebenogoe/clusnalyst, https://ebenogoe.github.io/clusnalyst/
+BugReports: https://github.com/ebenogoe/clusnalyst/issues
+Depends:
+    R (>= 4.1.0)
+Imports:
+    ade4,
+    ape,
+    Biostrings,
+    bsicons,
+    bslib (>= 0.8.0),
+    cicerone,
+    cluster,
+    config,
+    ggiraph,
+    ggplot2 (>= 3.5.0),
+    ggtree,
+    golem,
+    grDevices,
+    htmltools,
+    jsonlite,
+    methods,
+    msa,
+    reactable,
+    readxl,
+    seqinr,
+    shiny (>= 1.8.1),
+    stats,
+    svglite,
+    tools,
+    utils,
+    vcfR,
+    writexl
+Suggests:
+    chromote,
+    pkgload,
+    shinytest2,
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Encoding: UTF-8
+Language: en-GB
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3

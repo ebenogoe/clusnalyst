@@ -1,0 +1,22 @@
+test_that("PCoA and PCA return scores and variance", {
+  d <- clusnalyst_demo("snp")
+  dm <- compute_distance(d)
+  o <- ordinate(dm, method = "pcoa")
+  expect_equal(nrow(o$scores), 60)
+  expect_lte(sum(o$variance), 100 + 1e-8)
+  p <- ordinate(d = d, method = "pca")
+  expect_equal(nrow(p$scores), 60)
+  expect_error(ordinate(d = clusnalyst_demo("dna"), method = "pca"), "numeric")
+})
+
+test_that("partitions have k groups numbered down the tree", {
+  d <- clusnalyst_demo("traits")
+  dm <- compute_distance(d)
+  tr <- build_tree(dm, "upgma")
+  cl <- partition(dm, 4, "tree", tree = tr)
+  expect_equal(sort(unique(cl)), 1:4)
+  expect_equal(unname(cl[tip_order(tr$phylo)[1]]), 1)
+  expect_length(unique(partition(dm, 4, "pam")), 4)
+  expect_length(unique(partition(dm, 4, "kmeans", d = d)), 4)
+  expect_error(partition(dm, 3, "tree", tree = build_tree(dm, "nj")), "PAM")
+})

@@ -1,0 +1,17 @@
+^.*\.Rproj$
+^\.Rproj\.user$
+^data-raw$
+^dev$
+^app\.R$
+^rsconnect$
+^\.rscignore$
+^\.github$
+^LICENSE\.md$
+^README\.Rmd$
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
+^CLAUDE\.md$
+^tests/testthat/_snaps$
+^\.claude$
+^vignettes/articles$

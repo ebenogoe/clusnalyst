@@ -1,0 +1,13 @@
+tests
+dev
+data-raw
+man
+vignettes
+docs
+pkgdown
+.github
+_pkgdown.yml
+README.md
+NEWS.md
+clusnalyst.Rproj
+CLAUDE.md

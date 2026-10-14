@@ -1,0 +1,16 @@
+default:
+  golem_name: clusnalyst
+  golem_version: 0.1.0
+  app_prod: no
+  hosted: no
+  max_upload_mb: 200
+  max_sequences: 2000
+  max_bootstrap: 10000
+production:
+  app_prod: yes
+shinyapps:
+  app_prod: yes
+  hosted: yes
+  max_upload_mb: 30
+  max_sequences: 300
+  max_bootstrap: 1000

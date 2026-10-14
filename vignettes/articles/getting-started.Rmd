@@ -1,0 +1,73 @@
+---
+title: "Getting started"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 7, fig.height = 6)
+```
+
+This article runs the same steps as the app, in code, on the simulated SNP demo: 60 lines from three populations.
+
+```{r}
+library(clusnalyst)
+d <- clusnalyst_demo("snp")
+d
+```
+
+## Quality check
+
+```{r}
+q <- qc_summary(d)
+q$n_monomorphic
+d <- filter_data(d, max_marker_missing = 0.2, min_maf = 0.05)
+d$filter$after
+```
+
+## Distances and a tree
+
+```{r}
+dm <- compute_distance(d, "ibs")
+cophenetic_table(dm)
+tr <- build_tree(dm, "upgma")
+```
+
+## How much to trust it
+
+```{r}
+boot <- bootstrap_tree(d, tr, "ibs", B = 100, seed = 1)
+k <- optimal_k(dm, tr, k_max = 8, gap = TRUE)
+k$best_silhouette
+k$best_gap
+plot_k(k)
+```
+
+```{r, fig.height = 9}
+groups <- partition(dm, 3, "tree", tree = tr)
+plot_tree(tr, groups = setNames(paste("Cluster", groups), names(groups)),
+          group_title = "Cluster", support = boot$support, support_min = 50)
+```
+
+## Groups on a map
+
+```{r}
+ord <- ordinate(dm, method = "pcoa")
+plot_ordination(ord, groups = setNames(d$meta$population, rownames(d$meta)), group_title = "Population")
+```
+
+The simulated populations come back as the three clusters, and all three are supported in 100% of bootstrap replicates. The splits inside each population are not supported, which is what you would expect from lines drawn from the same population.
+
+## Isolation by distance
+
+```{r}
+geo <- metadata_distance(d$meta, c("latitude", "longitude"))
+m <- mantel_test(dm, geo, permutations = 999)
+c(r = m$r, p = m$p)
+```
+
+## The whole thing in one call
+
+```{r}
+s <- default_settings(d)
+res <- run_analysis(clusnalyst_demo("snp"), s)
+cat(build_script(s, list(demo = "snp")))
+```

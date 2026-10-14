@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+.DS_Store
+rsconnect/
+docs/
+inst/doc
+*.Rcheck/
+clusnalyst_*.tar.gz
+.claude/
