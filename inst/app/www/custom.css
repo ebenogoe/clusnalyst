@@ -356,3 +356,6 @@ bslib-input-dark-mode { --text-1: var(--cl-text); --text-2: var(--cl-muted); --v
   .cl-stat-value { font-size: 1.3rem; }
   .cl-aln-name { flex-basis: 6.5rem; }
 }
+
+/* Plot text: servers without a "sans" font mapping would otherwise fall back to a serif */
+.girafe_container_std svg text { font-family: "Plus Jakarta Sans", system-ui, -apple-system, "Segoe UI", sans-serif !important; }

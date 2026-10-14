@@ -47,6 +47,7 @@ th, td { border-bottom: 1px solid var(--line); padding: .35rem .5rem; text-align
 th { background:var(--band); }
 .fig { background:#fff; border:1px solid var(--line); border-radius:14px; padding:.75rem; margin:.75rem 0; overflow:auto; }
 .fig svg { max-width: 100%; height: auto; }
+.fig svg text { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif !important; }
 .note { color: var(--muted); font-size: .9rem; }
 dl.settings { display:grid; grid-template-columns: max-content 1fr; gap:.25rem 1rem; }
 dl.settings dt { font-weight: 700; }
