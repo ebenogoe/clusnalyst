@@ -2,8 +2,8 @@ mod_data_ui <- function(id) {
   ns <- shiny::NS(id)
   demos <- demo_info()
   shiny::tagList(
-    step_header(1, "Load your data",
-                "Upload a table, VCF, HapMap or FASTA file, try a demo dataset, or pick up where you left off."),
+    step_header(1, "Load data",
+                "Upload a table, VCF, HapMap or FASTA file, load a demo dataset, or resume a saved session."),
     bslib::layout_columns(
       col_widths = bslib::breakpoints(sm = 12, lg = c(5, 7)),
       shiny::div(
@@ -62,7 +62,7 @@ mod_data_ui <- function(id) {
               "Resume", value = "resume",
               shiny::div(
                 class = "pt-3",
-                shiny::p("Open a session file saved from the Report step. The analysis is run again with the same settings and seeds, so you get the same results."),
+                shiny::p("Open a session file exported from the Export step. All steps are rerun with the saved settings and seeds."),
                 shiny::fileInput(ns("session"), "Session file (.json)", accept = ".json", width = "100%")
               )
             )
@@ -224,8 +224,8 @@ mod_data_server <- function(id, state, goto, lim, dark) {
         shiny::p(class = "cl-muted small mb-2", paste0(paste(how, collapse = "; "), ".")),
         shiny::div(
           class = "cl-row-end",
-          shiny::span(class = "cl-muted small", "Wrong type or layout? Change it under Reading options."),
-          next_button(ns("next"), "Check quality")
+          shiny::span(class = "cl-muted small", "To correct the data type or layout, use Reading options."),
+          next_button(ns("next"), "Quality control")
         )
       )
     })

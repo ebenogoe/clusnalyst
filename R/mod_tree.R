@@ -1,8 +1,8 @@
 mod_tree_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
-    step_header(4, "Build the tree",
-                "Turn the distances into a tree. Not sure which method? Compare them: the one with the highest cophenetic correlation keeps your distances best."),
+    step_header(4, "Tree construction",
+                "Build a tree from the distance matrix. Compare methods by cophenetic correlation to identify the one that best preserves the original distances."),
     shiny::uiOutput(ns("body"))
   )
 }
@@ -117,7 +117,7 @@ mod_tree_server <- function(id, state, goto, dark) {
           }))
         ),
         shiny::p(class = "cl-muted small",
-                 "Cophenetic correlation (Sokal and Rohlf 1962). Above 0.8 is usually taken as a good fit. It measures fit only, so choose on biology too: NJ suits lineages that change at different rates.")
+                 "Cophenetic correlation (Sokal and Rohlf 1962). Values above 0.8 indicate a good fit. The statistic measures fit only; method choice should also reflect the biology, for example NJ for lineages evolving at unequal rates.")
       )
     })
 
@@ -175,7 +175,7 @@ mod_tree_server <- function(id, state, goto, dark) {
             stat_tile(sprintf("%.3f", cr), "cophenetic correlation",
                       if (cr >= 0.8) "a good fit to the distances" else if (cr >= 0.7) "a fair fit" else "a poor fit; try another method")
           ),
-          shiny::div(class = "cl-row-end", next_button(ns("next"), "Check the tree"))
+          shiny::div(class = "cl-row-end", next_button(ns("next"), "Validation"))
         ),
         plot_card(ns, "tree", "Tree",
                   extra_menu = shiny::tagList(

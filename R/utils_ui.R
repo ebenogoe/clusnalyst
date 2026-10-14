@@ -20,8 +20,8 @@ cl_theme <- function() {
   )
 }
 
-steps_def <- c(data = "Data", qc = "Quality check", distance = "Distances", tree = "Tree",
-               validate = "Validate", groups = "Groups", report = "Report")
+steps_def <- c(data = "Load data", qc = "Quality control", distance = "Distance matrix", tree = "Tree construction",
+               validate = "Validation", groups = "Groups and ordination", report = "Export")
 
 #' Heading block at the top of each analysis step
 #' @noRd

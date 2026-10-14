@@ -1,8 +1,8 @@
 mod_distance_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
-    step_header(3, "Compute distances",
-                "Choose how to measure how different two samples are. The default suits your data type; the note under the choice says when another one fits better."),
+    step_header(3, "Distance matrix",
+                "Select a distance measure. The default is set according to the data type."),
     shiny::uiOutput(ns("body"))
   )
 }
@@ -79,7 +79,7 @@ mod_distance_server <- function(id, state, goto, dark) {
           ),
           if (n_zero > 0) shiny::div(class = "alert alert-info small mb-2",
                                      sprintf("%d pairs of samples are identical (distance 0). They will join at the tips of the tree.", n_zero)),
-          shiny::div(class = "cl-row-end", next_button(ns("next"), "Build the tree"))
+          shiny::div(class = "cl-row-end", next_button(ns("next"), "Tree construction"))
         ),
         plot_card(ns, "heat", "Distance heatmap", interactive = attr(dm, "Size") <= 120,
                   extra_menu = shiny::tagList(
@@ -88,7 +88,7 @@ mod_distance_server <- function(id, state, goto, dark) {
                     shiny::tags$li(shiny::downloadLink(ns("xlsx"), "Matrix as Excel", class = "dropdown-item"))
                   ),
                   footer = shiny::span(class = "small cl-muted",
-                                       "Samples are in the order of the tree once it is built. Darker is more different."))
+                                       "Samples follow the tree order once a tree is built. Darker cells indicate larger distances."))
       )
     })
 

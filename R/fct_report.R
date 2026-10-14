@@ -63,11 +63,11 @@ fact <- function(value, label) {
 }
 
 setting_labels <- c(
-  max_marker_missing = "Most missing data per marker",
-  min_maf = "Smallest minor allele frequency",
-  drop_monomorphic = "Drop markers that do not vary",
-  max_sample_missing = "Most missing data per sample",
-  drop_empty_sites = "Drop all-gap alignment columns"
+  max_marker_missing = "Maximum missing rate per marker",
+  min_maf = "Minimum minor allele frequency",
+  drop_monomorphic = "Remove monomorphic markers",
+  max_sample_missing = "Maximum missing rate per sample",
+  drop_empty_sites = "Remove all-gap alignment columns"
 )
 
 settings_list <- function(x) {

@@ -1,8 +1,8 @@
 mod_qc_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
-    step_header(2, "Check quality",
-                "Look at missing data and how informative each marker is, then decide what to drop. The defaults are common choices; nothing is removed until you apply them."),
+    step_header(2, "Quality control",
+                "Review missing data, allele frequencies and heterozygosity, and set filtering thresholds. Data are removed only when filters are applied."),
     shiny::uiOutput(ns("body"))
   )
 }
@@ -42,27 +42,27 @@ mod_qc_server <- function(id, state, goto, lim, dark) {
             bslib::card_header("Filters"),
             if (d$type %in% c("binary", "snp")) shiny::tagList(
               shiny::sliderInput(ns("max_marker_missing"),
-                                 label_info("Most missing data per marker",
-                                            "Markers missing in more than this share of samples are dropped. 20% is a common cut-off."),
+                                 label_info("Maximum missing rate per marker",
+                                            "Markers missing in a larger proportion of samples are removed. 0.2 is a common threshold."),
                                  0, 1, defaults$max_marker_missing, step = 0.05, width = "100%"),
               shiny::sliderInput(ns("min_maf"),
-                                 label_info(if (d$type == "snp") "Smallest minor allele frequency" else "Smallest minor band frequency",
-                                            "Markers where the rarer allele (or band state) is less common than this are dropped. Rare variants carry little information about groups. 0.05 is usual for SNPs."),
+                                 label_info(if (d$type == "snp") "Minimum minor allele frequency" else "Minimum minor band frequency",
+                                            "Markers with a rarer allele (or band state) below this frequency are removed. Rare variants carry little information on group structure. 0.05 is standard for SNPs."),
                                  0, 0.5, defaults$min_maf, step = 0.01, width = "100%"),
-              shiny::checkboxInput(ns("drop_mono"), "Drop markers that do not vary", TRUE)
+              shiny::checkboxInput(ns("drop_mono"), "Remove monomorphic markers", TRUE)
             ),
             if (d$type == "quant") shiny::tagList(
-              shiny::sliderInput(ns("max_marker_missing"), "Most missing data per trait", 0, 1, 0.2, step = 0.05, width = "100%"),
-              shiny::checkboxInput(ns("drop_mono"), "Drop traits that do not vary", TRUE)
+              shiny::sliderInput(ns("max_marker_missing"), "Maximum missing rate per trait", 0, 1, 0.2, step = 0.05, width = "100%"),
+              shiny::checkboxInput(ns("drop_mono"), "Remove constant traits", TRUE)
             ),
             shiny::sliderInput(ns("max_sample_missing"),
-                               label_info(if (is_seq()) "Most gaps per sequence" else "Most missing data per sample",
-                                          "Samples above this are dropped after the markers are filtered. They would otherwise be placed on very little information."),
+                               label_info(if (is_seq()) "Maximum gap proportion per sequence" else "Maximum missing rate per sample",
+                                          "Applied after marker filtering. Samples above this threshold are removed."),
                                0, 1, defaults$max_sample_missing, step = 0.05, width = "100%"),
-            if (is_seq()) shiny::checkboxInput(ns("drop_empty"), "Drop alignment columns that are gaps in every sequence", TRUE),
+            if (is_seq()) shiny::checkboxInput(ns("drop_empty"), "Remove all-gap alignment columns", TRUE),
             shiny::div(
               class = "cl-row-end",
-              shiny::actionLink(ns("skip"), "Use everything as it is"),
+              shiny::actionLink(ns("skip"), "Skip filtering"),
               shiny::actionButton(ns("apply"), "Apply filters", class = "btn-primary")
             )
           )
@@ -74,7 +74,7 @@ mod_qc_server <- function(id, state, goto, lim, dark) {
           bslib::card(
             full_screen = TRUE,
             bslib::card_header(class = "cl-card-head", shiny::span("Distributions"),
-                               shiny::span(class = "cl-muted small", "Dashed lines show the current cut-offs")),
+                               shiny::span(class = "cl-muted small", "Dashed lines mark current thresholds")),
             shiny::plotOutput(ns("qc_plot"), height = "420px")
           ),
           bslib::navset_card_underline(
@@ -148,15 +148,15 @@ mod_qc_server <- function(id, state, goto, lim, dark) {
       applied <- state$data
       bslib::card(
         bslib::card_header(class = "cl-card-head",
-                           shiny::span("With these settings"),
+                           shiny::span("Filter preview"),
                            if (!is.null(applied)) shiny::span(class = "badge text-bg-success", "Applied")),
         body,
         if (!is.null(applied)) shiny::div(
           class = "cl-row-end",
           shiny::span(class = "cl-muted small",
-                      if (is.null(applied$filter)) "Using all the data unfiltered."
+                      if (is.null(applied$filter)) "No filters applied."
                       else sprintf("Using %s samples and %s %s.", fmt_n(nrow(applied$x)), fmt_n(ncol(applied$x)), unit)),
-          next_button(ns("next"), "Compute distances")
+          next_button(ns("next"), "Distance matrix")
         )
       )
     })

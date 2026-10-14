@@ -68,13 +68,13 @@ mod_guide_ui <- function(id) {
         "The seven steps", value = "steps", icon = bsicons::bs_icon("list-ol"),
         shiny::tags$ol(
           class = "cl-guide-steps",
-          shiny::tags$li(shiny::tags$b("Data. "), "Upload a file, load a demo, or resume a session. Check the summary: the number of samples and markers, the data type and the share of missing values."),
-          shiny::tags$li(shiny::tags$b("Quality check. "), "Drop markers with too much missing data or a very rare allele, and samples with too many gaps. Unaligned sequences are aligned here."),
-          shiny::tags$li(shiny::tags$b("Distances. "), "Choose a distance measure. The default suits the data type."),
-          shiny::tags$li(shiny::tags$b("Tree. "), "Choose a clustering method, or compare them all by cophenetic correlation. Change the layout, colours and labels without rebuilding."),
-          shiny::tags$li(shiny::tags$b("Validate. "), "Bootstrap support for each branch, the number of groups the data supports, and a Mantel test against a second matrix."),
-          shiny::tags$li(shiny::tags$b("Groups. "), "Split the samples into groups and see them on a PCoA or PCA plot. Download who is in which group."),
-          shiny::tags$li(shiny::tags$b("Report. "), "Download an HTML report, an R script and a session file.")
+          shiny::tags$li(shiny::tags$b("Load data. "), "Upload a file, load a demo dataset or resume a session. The summary reports the number of samples and markers, the data type and the proportion of missing values."),
+          shiny::tags$li(shiny::tags$b("Quality control. "), "Filter markers by missing data and minor allele frequency, and samples by missing data. Unaligned sequences are aligned here."),
+          shiny::tags$li(shiny::tags$b("Distance matrix. "), "Select a distance measure. The default depends on the data type."),
+          shiny::tags$li(shiny::tags$b("Tree construction. "), "Select a clustering method or compare all methods by cophenetic correlation. Layout, colours and labels can be changed without rebuilding."),
+          shiny::tags$li(shiny::tags$b("Validation. "), "Bootstrap support for each branch, estimates of the number of groups, and a Mantel test against a second matrix."),
+          shiny::tags$li(shiny::tags$b("Groups and ordination. "), "Partition samples into groups and display them on a PCoA or PCA plot. Group membership can be downloaded."),
+          shiny::tags$li(shiny::tags$b("Export. "), "Download the HTML report, the R script and a session file.")
         ),
         shiny::p("Changing an earlier step clears the results after it, so what you see always matches your current settings.")
       ),

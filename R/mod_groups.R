@@ -1,8 +1,8 @@
 mod_groups_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
-    step_header(6, "Find groups",
-                "Split the samples into groups and look at them on a map of the main axes of variation. Points that sit apart in the plot but share a group, or the other way round, are worth a second look."),
+    step_header(6, "Groups and ordination",
+                "Partition samples into groups and display them on principal coordinates or principal components."),
     shiny::uiOutput(ns("body"))
   )
 }
@@ -136,8 +136,8 @@ mod_groups_server <- function(id, state, goto, dark) {
           if (state$ord$negative_eigen > 0.05) shiny::p(class = "cl-muted small",
             sprintf("%.0f%% of the PCoA eigenvalues are negative, so this distance is not fully Euclidean and the map is an approximation.", 100 * state$ord$negative_eigen)),
           shiny::div(class = "cl-row-end",
-                     shiny::span(class = "cl-muted small", "The tree in step 4 can now be coloured by these groups."),
-                     next_button(ns("next"), "Make the report"))
+                     shiny::span(class = "cl-muted small", "The tree in step 4 can be coloured by these groups."),
+                     next_button(ns("next"), "Export"))
         ),
         plot_card(ns, "map", if (state$ord$method == "pcoa") "Principal coordinates" else "Principal components"),
         bslib::layout_columns(

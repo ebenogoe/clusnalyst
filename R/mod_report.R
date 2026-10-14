@@ -1,8 +1,8 @@
 mod_report_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
-    step_header(7, "Take your results with you",
-                "Download a report to share, an R script that repeats every step, or a session file to open here again later."),
+    step_header(7, "Export",
+                "Download the HTML report, an R script that reproduces the analysis, or a session file."),
     shiny::uiOutput(ns("body"))
   )
 }
@@ -21,19 +21,19 @@ mod_report_server <- function(id, state, goto) {
         shiny::div(
           bslib::card(
             bslib::card_header(class = "cl-card-head", shiny::span("Report"), shiny::span(class = "cl-muted small", "HTML, one file")),
-            shiny::p("A single web page with your data summary, figures, tables and settings. It opens in any browser, prints to PDF, and needs no other files."),
+            shiny::p("Self-contained HTML file with the data summary, figures, tables and settings. Opens in any browser and prints to PDF."),
             shiny::textInput(ns("title"), "Title", "Clusnalyst report", width = "100%"),
             shiny::selectInput(ns("layout"), "Tree layout in the report", tree_layouts()[c(1, 2, 4)], width = "100%"),
             shiny::downloadButton(ns("report"), "Download report", class = "btn-primary w-100")
           ),
           bslib::card(
             bslib::card_header(class = "cl-card-head", shiny::span("R script"), shiny::span(class = "cl-muted small", ".R")),
-            shiny::p("Code that runs the same analysis with the clusnalyst package, using your settings and seeds. Put it next to your data file and run it."),
+            shiny::p("Reproduces the analysis with the clusnalyst package, using the same settings and seeds. Run it from the folder containing your data file."),
             shiny::downloadButton(ns("script"), "Download R script", class = "btn-outline-primary w-100")
           ),
           bslib::card(
             bslib::card_header(class = "cl-card-head", shiny::span("Session file"), shiny::span(class = "cl-muted small", ".json")),
-            shiny::p("Your data and settings, to reopen under Data, then Resume. Nothing is kept on the server, so save this if you want to come back."),
+            shiny::p("Data and settings, for reopening under Load data, Resume. No data are stored on the server."),
             shiny::downloadButton(ns("session"), "Download session file", class = "btn-outline-primary w-100")
           )
         ),

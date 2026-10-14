@@ -183,9 +183,9 @@ bslib-input-dark-mode { --text-1: var(--cl-text); --text-2: var(--cl-muted); --v
 .cl-analyse .sidebar-title { text-transform: uppercase; letter-spacing: 0.08em; font-size: 0.78rem; font-weight: 800; color: var(--cl-label); }
 
 .cl-step-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
-.cl-step-head h2 { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.6rem); font-weight: 800; line-height: 1.05; margin: 0.15rem 0 0.5rem; }
+.cl-step-head h2 { font-size: 1.6rem; font-weight: 700; line-height: 1.2; letter-spacing: -0.01em; margin: 0.5rem 0 0.35rem; }
 .cl-kicker { display: inline-block; font-size: 0.78rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--cl-brand-text); background: var(--cl-brand-soft); border-radius: 999px; padding: 0.2rem 0.7rem; margin: 0; }
-.cl-lede { color: var(--cl-muted); max-width: 46rem; font-size: 1.05rem; margin: 0; }
+.cl-lede { color: var(--cl-muted); max-width: 46rem; font-size: 0.98rem; margin: 0; }
 
 .cl-stepper ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.25rem; }
 .cl-step {
@@ -298,7 +298,7 @@ bslib-input-dark-mode { --text-1: var(--cl-text); --text-2: var(--cl-muted); --v
 .cl-hero-small { color: var(--cl-muted); font-size: 0.9rem; max-width: 30rem; }
 .cl-hero-card .card-body { padding: 0.5rem; }
 .cl-band { background: var(--cl-band); border-radius: 24px; padding: clamp(1.5rem, 4vw, 3rem); margin-bottom: 2.5rem; }
-.cl-band h2, .cl-section h2, .cl-page h2 { font-weight: 800; font-size: clamp(1.5rem, 1.2rem + 1vw, 2rem); margin-bottom: 1.25rem; }
+.cl-band h2, .cl-section h2, .cl-page h2 { font-weight: 700; font-size: 1.3rem; letter-spacing: -0.01em; margin-bottom: 1rem; }
 .cl-flow { list-style: none; counter-reset: flow; padding: 0; margin: 0; display: grid; gap: 1.25rem 2rem; }
 @media (min-width: 768px) { .cl-flow { grid-template-columns: 1fr 1fr; } }
 .cl-flow li { counter-increment: flow; display: grid; grid-template-columns: 2.6rem 1fr; grid-template-rows: auto auto; column-gap: 0.75rem; align-items: start; }
@@ -316,8 +316,8 @@ bslib-input-dark-mode { --text-1: var(--cl-text); --text-2: var(--cl-muted); --v
 
 /* Guide and About ------------------------------------------------------------- */
 .cl-page { max-width: 52rem; padding-top: clamp(2rem, 4vw, 3.5rem); padding-bottom: 3rem; }
-.cl-page h1 { font-size: clamp(2.4rem, 1.6rem + 3vw, 3.8rem); font-weight: 800; line-height: 1.02; letter-spacing: -0.04em; margin: 0.9rem 0 1rem; }
-.cl-page .cl-lede { font-size: 1.2rem; margin-bottom: 1.5rem; }
+.cl-page h1 { font-size: 2rem; font-weight: 700; line-height: 1.15; letter-spacing: -0.015em; margin: 0.6rem 0 0.6rem; }
+.cl-page .cl-lede { font-size: 1rem; margin-bottom: 1.5rem; }
 .cl-page h2 { margin-top: 2.25rem; }
 .cl-guide-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
 .cl-page .cl-band { padding: clamp(1.25rem, 3vw, 2rem); margin-bottom: 2rem; }

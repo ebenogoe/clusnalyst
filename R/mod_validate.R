@@ -1,8 +1,8 @@
 mod_validate_ui <- function(id) {
   ns <- shiny::NS(id)
   shiny::tagList(
-    step_header(5, "Check the tree",
-                "A tree always comes out, even from random data. These checks tell you which parts of it to trust and how many groups the data really supports."),
+    step_header(5, "Validation",
+                "Assess branch support by bootstrapping, estimate the number of groups, and test correlation with a second distance matrix."),
     shiny::uiOutput(ns("body"))
   )
 }
@@ -68,7 +68,7 @@ mod_validate_server <- function(id, state, goto, lim, dark) {
             col_widths = bslib::breakpoints(sm = 12, lg = c(4, 8)),
             bslib::card(
               bslib::card_header("Compare with a second matrix"),
-              shiny::p(class = "cl-note", "Does genetic distance go with geographic distance, or with differences in traits? The Mantel test (Mantel 1967) correlates two distance matrices and gets a p-value by shuffling sample labels."),
+              shiny::p(class = "cl-note", "Correlates this distance matrix with a second one, such as geographic or trait distances (Mantel 1967). Significance is assessed by permuting sample labels."),
               shiny::radioButtons(ns("m_src"), "Second matrix",
                                   c(if (length(num_meta)) c("Numeric columns of the sample information" = "meta"),
                                     "Upload a file" = "file"), width = "100%"),
@@ -194,7 +194,7 @@ mod_validate_server <- function(id, state, goto, lim, dark) {
                            k$best_silhouette, best$silhouette, silhouette_meaning(best$silhouette))),
           if (state$data$type %in% c("snp", "binary") && best$silhouette < 0.5) {
             shiny::p(class = "cl-muted small",
-                     "Silhouette widths between individual genotypes are often low even when groups are real, because every individual differs at many markers. Look at the peak, the gap statistic and the PCoA in step 6 together, rather than the value alone.")
+                     "Silhouette widths between individual genotypes are typically low even when groups are real, because individuals differ at many markers. Interpret the peak together with the gap statistic and the ordination in step 6.")
           },
           shiny::div(class = "cl-row-end",
                      shiny::actionButton(ns("use_k"), sprintf("Use %d groups in step 6", k$best_silhouette), class = "btn-primary cl-next"))
