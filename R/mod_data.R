@@ -197,7 +197,7 @@ mod_data_server <- function(id, state, goto, lim, dark) {
     output$summary_ui <- shiny::renderUI({
       d <- state$raw
       if (is.null(d)) {
-        return(bslib::card(empty_state("Load a file or a demo dataset and a summary appears here.")))
+        return(bslib::card(empty_state("Load a file or a demo dataset. View summary here.")))
       }
       q <- qc_summary(d)
       cols <- if (!is.null(d$x)) ncol(d$x) else NA

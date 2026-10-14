@@ -116,7 +116,7 @@ stepper_ui <- function(status, current) {
                       shiny::span(class = "cl-step-title", steps_def[[id]]),
                       shiny::span(class = "cl-step-sub",
                                   if (!is.null(s$sub)) s$sub
-                                  else if (!s$open) "Not yet"
+                                  else if (!s$open) "Pending"
                                   else "Ready"))
         )
       )
