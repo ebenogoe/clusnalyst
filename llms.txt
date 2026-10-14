@@ -14,7 +14,7 @@ group](reference/figures/04-tree.png)
 The tree step, with the SNP demo clustered by UPGMA and coloured by
 group
 
-## What it does
+## Workflow
 
 1.  **Data.** Reads CSV, TSV and Excel tables, VCF, HapMap and FASTA. It
     works out the data type and whether markers are in rows or columns,
@@ -40,12 +40,24 @@ group
     PNG, SVG or PDF, tables as CSV or Excel, a Newick tree and a session
     file you can reopen later.
 
+## Accepted data formats
+
+| Data type | File formats | Distance measures |
+|----|----|----|
+| Dominant or binary markers (RAPD, AFLP, ISSR, presence and absence) | CSV, TSV, Excel with 0 and 1 | Jaccard, Dice, simple matching |
+| SNP genotypes | CSV or Excel (AA/AG/GG, A/G, IUPAC or 0/1/2), VCF, HapMap | Allele sharing (IBS), modified Rogers, Euclidean |
+| Measured and categorical traits | CSV, TSV, Excel | Euclidean, Manhattan, Gower |
+| DNA sequences | FASTA, aligned or not | K80, p-distance, JC69, TN93 |
+| Protein sequences | FASTA, aligned or not | p-distance, identity, similarity |
+
+## Screenshots
+
 |  |  |
 |----|----|
 | ![Quality check](reference/figures/03-quality.png) | ![Bootstrap support](reference/figures/05-bootstrap.png) |
 | ![Groups on a PCoA plot](reference/figures/06-groups.png) | ![Report downloads](reference/figures/07-report.png) |
 
-## Install and run it yourself
+## Installation
 
 The hosted app has limits (30 MB files, 300 sequences, 1,000 bootstrap
 replicates). On your own computer there are none.

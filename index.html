@@ -65,7 +65,7 @@
 <img src="reference/figures/04-tree.png" alt="The tree step, with the SNP demo clustered by UPGMA and coloured by group"><div class="figcaption">The tree step, with the SNP demo clustered by UPGMA and coloured by group</div>
 </div>
 <div class="section level2">
-<h2 id="what-it-does">What it does<a class="anchor" aria-label="anchor" href="#what-it-does"></a>
+<h2 id="workflow">Workflow<a class="anchor" aria-label="anchor" href="#workflow"></a>
 </h2>
 <ol style="list-style-type: decimal">
 <li>
@@ -83,6 +83,53 @@
 <li>
 <strong>Report.</strong> A self-contained HTML report, an R script, figures as PNG, SVG or PDF, tables as CSV or Excel, a Newick tree and a session file you can reopen later.</li>
 </ol>
+</div>
+<div class="section level2">
+<h2 id="accepted-data-formats">Accepted data formats<a class="anchor" aria-label="anchor" href="#accepted-data-formats"></a>
+</h2>
+<table class="table">
+<colgroup>
+<col width="33%">
+<col width="33%">
+<col width="33%">
+</colgroup>
+<thead><tr>
+<th>Data type</th>
+<th>File formats</th>
+<th>Distance measures</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Dominant or binary markers (RAPD, AFLP, ISSR, presence and absence)</td>
+<td>CSV, TSV, Excel with 0 and 1</td>
+<td>Jaccard, Dice, simple matching</td>
+</tr>
+<tr>
+<td>SNP genotypes</td>
+<td>CSV or Excel (AA/AG/GG, A/G, IUPAC or 0/1/2), VCF, HapMap</td>
+<td>Allele sharing (IBS), modified Rogers, Euclidean</td>
+</tr>
+<tr>
+<td>Measured and categorical traits</td>
+<td>CSV, TSV, Excel</td>
+<td>Euclidean, Manhattan, Gower</td>
+</tr>
+<tr>
+<td>DNA sequences</td>
+<td>FASTA, aligned or not</td>
+<td>K80, p-distance, JC69, TN93</td>
+</tr>
+<tr>
+<td>Protein sequences</td>
+<td>FASTA, aligned or not</td>
+<td>p-distance, identity, similarity</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section level2">
+<h2 id="screenshots">Screenshots<a class="anchor" aria-label="anchor" href="#screenshots"></a>
+</h2>
 <table class="table">
 <colgroup>
 <col width="50%">
@@ -101,7 +148,7 @@
 </table>
 </div>
 <div class="section level2">
-<h2 id="install-and-run-it-yourself">Install and run it yourself<a class="anchor" aria-label="anchor" href="#install-and-run-it-yourself"></a>
+<h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
 <p>The hosted app has limits (30 MB files, 300 sequences, 1,000 bootstrap replicates). On your own computer there are none.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
