@@ -285,6 +285,7 @@ bslib-input-dark-mode { --text-1: var(--cl-text); --text-2: var(--cl-muted); --v
 
 /* Home ---------------------------------------------------------------------- */
 .cl-home, .cl-page { max-width: 76rem; margin: 0 auto; padding: 0 clamp(1rem, 3vw, 2rem); }
+.cl-home { min-height: calc(100vh - 9rem); display: grid; align-items: center; }
 .cl-hero { position: relative; display: grid; gap: 2rem; padding: clamp(2rem, 5vw, 4.5rem) 0 clamp(2rem, 4vw, 3.5rem); align-items: center; }
 .cl-hero > * { position: relative; z-index: 1; }
 .cl-bubbles { position: absolute; z-index: 0; right: -9rem; top: -3.5rem; width: min(60rem, 85vw); height: auto; pointer-events: none; }
@@ -319,6 +320,9 @@ bslib-input-dark-mode { --text-1: var(--cl-text); --text-2: var(--cl-muted); --v
 .cl-page .cl-lede { font-size: 1.2rem; margin-bottom: 1.5rem; }
 .cl-page h2 { margin-top: 2.25rem; }
 .cl-guide-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-bottom: 2rem; }
+.cl-page .cl-band { padding: clamp(1.25rem, 3vw, 2rem); margin-bottom: 2rem; }
+.cl-page .cl-band h2, .cl-page .cl-section h2 { margin-top: 0; }
+.cl-page .cl-section { margin-bottom: 2rem; }
 .accordion { --bs-accordion-border-radius: var(--cl-radius); --bs-accordion-inner-border-radius: calc(var(--cl-radius) - 1px); --bs-accordion-bg: var(--cl-surface); --bs-accordion-border-color: var(--cl-line); --bs-accordion-active-bg: var(--cl-brand-soft); --bs-accordion-active-color: var(--cl-heading); --bs-accordion-btn-focus-box-shadow: 0 0 0 3px var(--cl-brand-line); }
 .accordion-button { font-weight: 700; min-height: var(--cl-target); }
 .cl-dl dt { font-weight: 700; color: var(--cl-heading); margin-top: 0.75rem; }

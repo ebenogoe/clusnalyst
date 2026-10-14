@@ -70,7 +70,7 @@ mod_data_ui <- function(id) {
         ),
         bslib::card(
           bslib::card_header(label_info("Sample information (optional)",
-            "A table with sample names in the first column and anything else in the other columns: population, origin, latitude and longitude, and so on. These columns can colour the tree and the PCoA, appear when you hover a sample, and feed a Mantel test.")),
+            "A table with sample names in the first column and anything else in the other columns: population, origin, latitude and longitude, and so on. These columns can colour the tree and the PCoA, appear when you hover over a sample, and feed a Mantel test.")),
           shiny::fileInput(ns("meta"), NULL, accept = c(".csv", ".tsv", ".txt", ".xlsx", ".xls"),
                            placeholder = "No file chosen", width = "100%"),
           shiny::uiOutput(ns("meta_status"))

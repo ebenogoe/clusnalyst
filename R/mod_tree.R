@@ -182,7 +182,7 @@ mod_tree_server <- function(id, state, goto, dark) {
                     shiny::tags$li(shiny::tags$hr(class = "dropdown-divider")),
                     shiny::tags$li(shiny::downloadLink(ns("newick"), "Newick tree (.nwk)", class = "dropdown-item"))
                   ),
-                  footer = shiny::span(class = "small cl-muted", "Hover a sample for details. Scroll or use the toolbar to zoom."))
+                  footer = shiny::span(class = "small cl-muted", "Hover over a sample for details. Scroll or use the toolbar to zoom."))
       )
     })
 

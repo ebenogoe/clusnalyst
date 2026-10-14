@@ -10,6 +10,40 @@ mod_guide_ui <- function(id) {
     shiny::div(class = "cl-guide-actions",
                shiny::actionButton(ns("tour"), shiny::tagList(bsicons::bs_icon("signpost-split"), "Take the tour"), class = "btn-primary"),
                shiny::actionButton(ns("demo"), "Open the demo data", class = "btn-outline-primary")),
+    shiny::tags$section(
+      class = "cl-band",
+      shiny::h2("What it does"),
+      shiny::tags$ol(
+        class = "cl-flow",
+        flow_item("Read", "CSV and Excel tables, VCF, HapMap and FASTA. It works out the data type and which way round the table is, and you can correct it."),
+        flow_item("Check", "Missing data, allele frequencies and heterozygosity, with filters. Unaligned sequences are aligned with ClustalOmega, ClustalW or MUSCLE."),
+        flow_item("Measure", "Jaccard, Dice and simple matching for bands; allele sharing and Rogers for SNPs; Gower for mixed traits; Kimura and others for DNA."),
+        flow_item("Build", "UPGMA, WPGMA, single, complete and Ward linkage, neighbour joining and BIONJ. A cophenetic correlation table shows which fits your distances best."),
+        flow_item("Test", "Bootstrap support from resampled markers, silhouette widths, the gap statistic and Mantel tests."),
+        flow_item("Group", "Cut the tree, or use PAM or k-means, and see the groups on a PCoA or PCA plot."),
+        flow_item("Keep", "An HTML report, an R script that repeats the analysis, figures as PNG, SVG or PDF, and a session file.")
+      )
+    ),
+    shiny::tags$section(
+      class = "cl-section",
+      shiny::h2("Data it reads"),
+      shiny::div(
+        class = "cl-table-wrap",
+        shiny::tags$table(
+          class = "table cl-formats",
+          shiny::tags$thead(shiny::tags$tr(shiny::tags$th("Data"), shiny::tags$th("Files"), shiny::tags$th("Distances"))),
+          shiny::tags$tbody(
+            format_row("Dominant or binary markers (RAPD, AFLP, ISSR, presence and absence)", "CSV, TSV, Excel with 0 and 1", "Jaccard, Dice, simple matching"),
+            format_row("SNP genotypes", "CSV or Excel (AA/AG/GG, A/G, IUPAC or 0/1/2), VCF, HapMap", "Allele sharing (IBS), modified Rogers, Euclidean"),
+            format_row("Measured and categorical traits", "CSV, TSV, Excel", "Euclidean, Manhattan, Gower"),
+            format_row("DNA sequences", "FASTA, aligned or not", "K80, p-distance, JC69, TN93"),
+            format_row("Protein sequences", "FASTA, aligned or not", "p-distance, identity, similarity")
+          )
+        )
+      ),
+      shiny::p(class = "cl-muted",
+               "Tables need one row per sample with the sample name in the first column, or one row per marker. Templates are under Getting your file ready, below.")
+    ),
     bslib::accordion(
       id = ns("acc"),
       multiple = TRUE,
