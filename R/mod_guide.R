@@ -12,7 +12,7 @@ mod_guide_ui <- function(id) {
                shiny::actionButton(ns("demo"), "Open the demo data", class = "btn-outline-primary")),
     shiny::tags$section(
       class = "cl-band",
-      shiny::h2("What it does"),
+      shiny::h2("Workflow"),
       shiny::tags$ol(
         class = "cl-flow",
         flow_item("Read", "CSV and Excel tables, VCF, HapMap and FASTA. It works out the data type and which way round the table is, and you can correct it."),
@@ -26,12 +26,12 @@ mod_guide_ui <- function(id) {
     ),
     shiny::tags$section(
       class = "cl-section",
-      shiny::h2("Data it reads"),
+      shiny::h2("Accepted data formats"),
       shiny::div(
         class = "cl-table-wrap",
         shiny::tags$table(
           class = "table cl-formats",
-          shiny::tags$thead(shiny::tags$tr(shiny::tags$th("Data"), shiny::tags$th("Files"), shiny::tags$th("Distances"))),
+          shiny::tags$thead(shiny::tags$tr(shiny::tags$th("Data type"), shiny::tags$th("File formats"), shiny::tags$th("Distance measures"))),
           shiny::tags$tbody(
             format_row("Dominant or binary markers (RAPD, AFLP, ISSR, presence and absence)", "CSV, TSV, Excel with 0 and 1", "Jaccard, Dice, simple matching"),
             format_row("SNP genotypes", "CSV or Excel (AA/AG/GG, A/G, IUPAC or 0/1/2), VCF, HapMap", "Allele sharing (IBS), modified Rogers, Euclidean"),

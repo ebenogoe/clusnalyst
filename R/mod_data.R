@@ -21,7 +21,7 @@ mod_data_ui <- function(id) {
                              shiny::p("Tables: one row per sample, sample names in the first column. One row per marker also works; the app spots it."),
                              shiny::p("Markers: 0/1 for bands; AA/AG/GG, A/G, IUPAC letters or 0/1/2 for SNPs. Blank, NA or NN means missing."),
                              shiny::p("Also VCF (.vcf, .vcf.gz), HapMap (.hmp.txt) and FASTA."),
-                             title = "Files that work"),
+                             title = "Accepted data formats"),
                   accept = c(".csv", ".tsv", ".txt", ".xlsx", ".xls", ".vcf", ".gz", ".fasta",
                              ".fa", ".fas", ".fna", ".faa", ".aln"),
                   placeholder = "No file chosen", width = "100%"
