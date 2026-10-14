@@ -11,10 +11,6 @@ navbar:
   structure:
     left: [intro, reference, articles, news]
     right: [search, github]
-  components:
-    github:
-      icon: fab fa-github
-      href: https://github.com/ebenogoe/clusnalyst
 reference:
   - title: The app
     contents:
